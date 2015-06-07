@@ -1,4 +1,4 @@
-﻿using MosqueFinder.Forms.Features.MosquesAroundMe;
+﻿using MosqueFinder.Forms.Core.Domain;
 
 namespace MosqueFinder.Forms.Services.Abstarcts
 {

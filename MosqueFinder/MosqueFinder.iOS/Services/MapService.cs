@@ -1,5 +1,5 @@
 using Foundation;
-using MosqueFinder.Forms.Features.MosquesAroundMe;
+using MosqueFinder.Forms.Core.Domain;
 using MosqueFinder.Forms.Services.Abstarcts;
 using UIKit;
 
@@ -25,6 +25,8 @@ namespace MosqueFinder.iOS.Services
                     Title = "Error"
                 };
                 uiAlertView.Show();
+
+                return;
             }
 
             UIApplication.SharedApplication.OpenUrl(new NSUrl(mapsUrl));

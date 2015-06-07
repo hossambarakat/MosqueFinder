@@ -1,6 +1,5 @@
-﻿using System.Dynamic;
+﻿using System.Windows.Input;
 using MosqueFinder.Forms.Core.Domain;
-using System.Windows.Input;
 using MosqueFinder.Forms.Services.Abstarcts;
 using Xamarin.Forms;
 
@@ -13,7 +12,7 @@ namespace MosqueFinder.Forms.Features.MosquesAroundMe
         {
             ViewMapCommand = new Command(async () =>
             {
-                mapService.OpenMaps(Location, await locationService.GetCurrentLocation());
+                mapService.OpenMaps(await locationService.GetCurrentLocation(), Location);
             });
         }
 
