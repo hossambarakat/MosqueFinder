@@ -53,7 +53,7 @@
                   	<StackLayout  Orientation="Horizontal" HorizontalOptions="End" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" >
                   		<Button Text="Leave a tip" ></Button>
                   		<BoxView Color="#ecf0f1" WidthRequest="1" ></BoxView>
-                  		<Button Text="View on map" ></Button>
+                  		<Button Command="{Binding ViewMapCommand}" Text="View on map" ></Button>
                   	</StackLayout>
                 </Grid>
           	</Frame>

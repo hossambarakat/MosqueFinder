@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Diagnostics;
+using MosqueFinder.Forms.Core.DI;
 using MosqueFinder.Forms.Core.Domain;
 using MosqueFinder.Forms.Services.Abstarcts;
 using Xamarin.Forms;
@@ -13,11 +14,13 @@ namespace MosqueFinder.Forms.Features.MosquesAroundMe
 
         public ObservableCollection<MosqueViewModel> Mosques { get; private set; }
 
+
         public MosquesListViewModel(IMosquesService mosquesServcie, ILocationService locationService)
         {
             _mosquesServcie = mosquesServcie;
             _locationService = locationService;
             Mosques = new ObservableCollection<MosqueViewModel>();
+
         }
 
         public async void Load()
@@ -31,19 +34,18 @@ namespace MosqueFinder.Forms.Features.MosquesAroundMe
 
             foreach (var mosque in mosques)
             {
-                Mosques.Add(new MosqueViewModel()
-                {
-                    Address1 = mosque.Address1,
-                    Address2 = mosque.Address2,
-                    Saturady = mosque.Saturady,
-                    Sunday = mosque.Sunday,
-                    Jumma = mosque.Jumma,
-                    LadiesRoom = mosque.LadiesRoom,
-                    Name = mosque.Name,
-                    Location = mosque.Location,
-                    Verified = mosque.Verified,
-                    Weekdays = mosque.Weekdays
-                });
+                var mosqueViewModel = IoCHelper.Resolve<MosqueViewModel>();
+                mosqueViewModel.Address1 = mosque.Address1;
+                mosqueViewModel.Address2 = mosque.Address2;
+                mosqueViewModel.Saturady = mosque.Saturady;
+                mosqueViewModel.Sunday = mosque.Sunday;
+                mosqueViewModel.Jumma = mosque.Jumma;
+                mosqueViewModel.LadiesRoom = mosque.LadiesRoom;
+                mosqueViewModel.Name = mosque.Name;
+                mosqueViewModel.Location = mosque.Location;
+                mosqueViewModel.Verified = mosque.Verified;
+                mosqueViewModel.Weekdays = mosque.Weekdays;
+                Mosques.Add(mosqueViewModel);
             }
         }
     }

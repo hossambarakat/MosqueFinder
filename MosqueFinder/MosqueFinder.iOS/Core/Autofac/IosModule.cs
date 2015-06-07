@@ -9,6 +9,7 @@ namespace MosqueFinder.iOS.Core.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<LocationService>().As<ILocationService>();
+            builder.RegisterType<MapService>().As<IMapService>();
         }
     }
 }

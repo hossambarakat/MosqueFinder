@@ -23,6 +23,7 @@ namespace MosqueFinder.Forms.Services
                     Saturady = "Fajr, Duhr, Asr, Maghreb, Issa",
                     Sunday = "Fajr, Duhr, Asr, Maghreb, Issa",
                     Verified = true,
+                    Location = new Location(33,151)
                 },
                 new Mosque
                 {
@@ -35,6 +36,7 @@ namespace MosqueFinder.Forms.Services
                     Saturady = "Fajr, Duhr, Asr",
                     Sunday = "Fajr, Duhr, Asr, Maghreb, Issa",
                     Verified = false,
+                    Location = new Location(33,151)
                 }
             };
 

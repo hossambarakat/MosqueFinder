@@ -11,7 +11,7 @@ namespace MosqueFinder.Forms.Core.DI
         {
             builder.RegisterType<MosquesService>().As<IMosquesService>();
             builder.RegisterType<MosquesListViewModel>().AsSelf();
-            
+            builder.RegisterType<MosqueViewModel>().AsSelf();
         }
     }
 }
