@@ -9,6 +9,7 @@ using MosqueFinder.Forms.Features.MosquesAroundMe;
 using MosqueFinder.Forms.Services;
 using MosqueFinder.Forms.Services.Abstarcts;
 using UIKit;
+using ObjCRuntime;
 
 namespace MosqueFinder.iOS.Services
 {
@@ -20,7 +21,7 @@ namespace MosqueFinder.iOS.Services
         public LocationService()
         {
             _locationManager = new CLLocationManager();
-            Init();
+            
         }
 
         private void Init()
@@ -39,6 +40,10 @@ namespace MosqueFinder.iOS.Services
                 // this won't be called on iOS 6 (deprecated)
                 _locationManager.UpdatedLocation += (sender, e) => { UpdateLocation(e.NewLocation); };
             }
+			if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+			{
+				_locationManager.RequestWhenInUseAuthorization();
+			}
 
             _locationManager.StartUpdatingLocation();
         }
@@ -50,6 +55,8 @@ namespace MosqueFinder.iOS.Services
 
         public async Task<Location> GetCurrentLocation()
         {
+			Init();
+
             CancellationTokenSource cancellationToken = new CancellationTokenSource();
             cancellationToken.CancelAfter(TimeSpan.FromSeconds(10));
             var token = cancellationToken.Token;
