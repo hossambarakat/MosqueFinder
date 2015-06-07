@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using MosqueFinder.Forms;
 using UIKit;
 
 namespace MosqueFinder.iOS
