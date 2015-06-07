@@ -48,9 +48,9 @@
                   	<Label Text="Ladies:" Grid.Row="7" Grid.Column="0" FontSize="15"/>
                   	<Label Text="{Binding LadiesRoom, Converter={StaticResource BooleanToStringConverter}}" Grid.Row="7" Grid.Column="1"  FontSize="15"/>
 
+                  	<BoxView Color="#ecf0f1" Grid.Row="8" VerticalOptions="End" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="1"></BoxView>
 
-
-                  	<StackLayout  Orientation="Horizontal" HorizontalOptions="End" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" >
+                  	<StackLayout  Orientation="Horizontal" HorizontalOptions="End" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" >
                   		<Button Text="Leave a tip" ></Button>
                   		<BoxView Color="#ecf0f1" WidthRequest="1" ></BoxView>
                   		<Button Text="View on map" ></Button>
