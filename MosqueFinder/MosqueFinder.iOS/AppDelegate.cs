@@ -3,6 +3,7 @@ using MosqueFinder.Forms;
 using MosqueFinder.Forms.Core.DI;
 using MosqueFinder.iOS.Core.Autofac;
 using UIKit;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
 namespace MosqueFinder.iOS
@@ -20,6 +21,15 @@ namespace MosqueFinder.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+
+        public override UIWindow Window
+        {
+            get;
+            set;
+        }
+
+        //public static UIViewController RootViewController { get; private set; }
+
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Xamarin.Forms.Forms.Init();
@@ -27,6 +37,10 @@ namespace MosqueFinder.iOS
             IoCHelper.Init(new IosModule(),new FormsModule());
 
             LoadApplication(new App());
+
+            //RootViewController = App.RootPage.CreateViewController();
+
+            //Window = new UIWindow(UIScreen.MainScreen.Bounds) { RootViewController = RootViewController };
 
             return base.FinishedLaunching(app, options);
         }

@@ -1,5 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
+using MosqueFinder.Forms.Core.Domain;
 using MosqueFinder.Forms.Services.Abstarcts;
+using Xamarin.Forms;
 
 namespace MosqueFinder.Forms.Features.MosquesAroundMe
 {
@@ -20,7 +23,12 @@ namespace MosqueFinder.Forms.Features.MosquesAroundMe
         public async void Load()
         {
             Mosques.Clear();
-            var mosques = await _mosquesServcie.MosquesAroundMe(await _locationService.GetCurrentLocation());
+            var location = await _locationService.GetCurrentLocation();
+
+            //await App.RootPage.DisplayAlert("Alert", string.Format("latitude: {0}, longitutde: {1}", location.Latitude, location.Longitude), "Ok");
+
+            var mosques = await _mosquesServcie.MosquesAroundMe(location);
+
             foreach (var mosque in mosques)
             {
                 Mosques.Add(new MosqueViewModel()

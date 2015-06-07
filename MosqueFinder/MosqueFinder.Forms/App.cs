@@ -9,7 +9,7 @@ namespace MosqueFinder.Forms
         public App()
         {
             // The root page of your application
-            MainPage = new NavigationPage(new MosquesList());
+            MainPage = RootPage;
         }
 
         protected override void OnStart()
@@ -26,6 +26,13 @@ namespace MosqueFinder.Forms
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        private static NavigationPage _rootPage;
+
+        public static NavigationPage RootPage
+        {
+            get { return _rootPage ?? (_rootPage = new NavigationPage(new MosquesList())); }
         }
     }
 }
