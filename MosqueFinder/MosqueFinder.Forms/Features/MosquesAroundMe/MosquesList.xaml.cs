@@ -10,9 +10,18 @@ namespace MosqueFinder.Forms.Features.MosquesAroundMe
 {
     public partial class MosquesList : ContentPage
     {
+        private MosquesListViewModel _mosquesListViewModel;
+
         public MosquesList()
         {
+            _mosquesListViewModel = new MosquesListViewModel();
             InitializeComponent();
+            BindingContext = _mosquesListViewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            _mosquesListViewModel.Load();
         }
     }
 }

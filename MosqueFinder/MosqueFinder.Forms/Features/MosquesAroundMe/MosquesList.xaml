@@ -3,5 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Mosques Around Me"
              x:Class="MosqueFinder.Forms.Features.MosquesAroundMe.MosquesList">
-  <Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />
+ <ListView ItemsSource="{Binding Mosques}" HasUnevenRows="True" BackgroundColor="#ecf0f1">
+   <ListView.ItemTemplate>
+     <DataTemplate>
+       <ViewCell Height="100">
+         <ViewCell.View>
+           <StackLayout  Orientation="Vertical" Padding="10, 10, 10, 10">
+             <Frame HeightRequest="90" BackgroundColor="White" VerticalOptions="StartAndExpand" Padding="5, 5, 5, 5">
+               <StackLayout Orientation="Vertical">
+                 <Label Text="{Binding Name}" FontSize="10"
+                        WidthRequest="20"
+                        HeightRequest="20" />
+               </StackLayout>
+             </Frame>
+           </StackLayout>
+         </ViewCell.View>
+       </ViewCell>
+     </DataTemplate>
+   </ListView.ItemTemplate>
+ </ListView>
 </ContentPage>
