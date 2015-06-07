@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using MosqueFinder.Forms.Core.DI;
+using MosqueFinder.Forms.Services;
+using MosqueFinder.Forms.Services.Abstarcts;
 using Xamarin.Forms;
 
 namespace MosqueFinder.Forms.Features.MosquesAroundMe
@@ -14,9 +11,15 @@ namespace MosqueFinder.Forms.Features.MosquesAroundMe
 
         public MosquesList()
         {
-            _mosquesListViewModel = new MosquesListViewModel();
+            _mosquesListViewModel = IoCHelper.Resolve<MosquesListViewModel>();
             InitializeComponent();
             BindingContext = _mosquesListViewModel;
+            mosquesListView.ItemSelected += (sender, args) =>
+            {
+                if(sender==null)return;
+
+                mosquesListView.SelectedItem = null;
+            };
         }
 
         protected override void OnAppearing()

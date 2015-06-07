@@ -1,4 +1,5 @@
-﻿using MosqueFinder.Forms.Features.MosquesAroundMe;
+﻿using MosqueFinder.Forms.Core.DI;
+using MosqueFinder.Forms.Features.MosquesAroundMe;
 using Xamarin.Forms;
 
 namespace MosqueFinder.Forms
@@ -14,6 +15,7 @@ namespace MosqueFinder.Forms
         protected override void OnStart()
         {
             // Handle when your app starts
+           
         }
 
         protected override void OnSleep()

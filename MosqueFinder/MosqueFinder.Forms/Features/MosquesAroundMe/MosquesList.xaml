@@ -2,24 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Mosques Around Me"
+             xmlns:local="clr-namespace:MosqueFinder.Forms.Converters;assembly=MosqueFinder.Forms"
              x:Class="MosqueFinder.Forms.Features.MosquesAroundMe.MosquesList">
- <ListView ItemsSource="{Binding Mosques}" HasUnevenRows="True" BackgroundColor="#ecf0f1">
-   <ListView.ItemTemplate>
-     <DataTemplate>
-       <ViewCell Height="100">
-         <ViewCell.View>
-           <StackLayout  Orientation="Vertical" Padding="10, 10, 10, 10">
-             <Frame HeightRequest="90" BackgroundColor="White" VerticalOptions="StartAndExpand" Padding="5, 5, 5, 5">
-               <StackLayout Orientation="Vertical">
-                 <Label Text="{Binding Name}" FontSize="10"
-                        WidthRequest="20"
-                        HeightRequest="20" />
-               </StackLayout>
-             </Frame>
-           </StackLayout>
-         </ViewCell.View>
-       </ViewCell>
-     </DataTemplate>
-   </ListView.ItemTemplate>
- </ListView>
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <local:BooleanToStringConverter x:Key="BooleanToStringConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ListView x:Name="mosquesListView" ItemsSource="{Binding Mosques}" HasUnevenRows="True" BackgroundColor="#ecf0f1">
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell Height="150">
+          <ViewCell.View>
+            <StackLayout  Orientation="Vertical" Padding="10, 10, 10, 10">
+              <Frame HeightRequest="150" BackgroundColor="White" VerticalOptions="StartAndExpand" Padding="5, 5, 5, 5">
+                <StackLayout Orientation="Vertical" Spacing="5">
+                  <Label Text="{Binding Name}" FontSize="10" />
+                  <Label Text="{Binding Address1}" FontSize="10" />
+                  <Label Text="{Binding Address2}" FontSize="10" />
+                  <Label Text="{Binding Weekdays}" FontSize="10" />
+                  <Label Text="{Binding Staurday}" FontSize="10" />
+                  <Label Text="{Binding Sunday}" FontSize="10" />
+                  <Label Text="{Binding Jumma, Converter={StaticResource BooleanToStringConverter}}" FontSize="10"/>  
+                  <Label Text="{Binding LadiesRoom, Converter={StaticResource BooleanToStringConverter}}" FontSize="10"/>
+                </StackLayout>
+              </Frame>
+            </StackLayout>
+          </ViewCell.View>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
 </ContentPage>

@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
+﻿using Foundation;
 using MosqueFinder.Forms;
+using MosqueFinder.Forms.Core.DI;
+using MosqueFinder.iOS.Core.Autofac;
 using UIKit;
+using Xamarin.Forms.Platform.iOS;
 
 namespace MosqueFinder.iOS
 {
@@ -12,7 +11,7 @@ namespace MosqueFinder.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : FormsApplicationDelegate
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
@@ -23,7 +22,10 @@ namespace MosqueFinder.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
+            Xamarin.Forms.Forms.Init();
+
+            IoCHelper.Init(new IosModule(),new FormsModule());
+
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
