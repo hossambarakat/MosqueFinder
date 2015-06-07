@@ -55,14 +55,9 @@
                   		<BoxView Color="#ecf0f1" WidthRequest="1" ></BoxView>
                   		<Button Text="View on map" ></Button>
                   	</StackLayout>
-
-
                 </Grid>
-
-               
           	</Frame>
             </StackLayout>
-
           </ViewCell.View>
         </ViewCell>
       </DataTemplate>
